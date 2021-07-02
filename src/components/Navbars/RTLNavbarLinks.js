@@ -13,6 +13,7 @@ import Poppers from "@material-ui/core/Popper";
 import Person from "@material-ui/icons/Person";
 import Notifications from "@material-ui/icons/Notifications";
 import Dashboard from "@material-ui/icons/Dashboard";
+import Divider from "@material-ui/core/Divider";
 import Search from "@material-ui/icons/Search";
 // core components
 import CustomInput from "components/CustomInput/CustomInput.js";
@@ -24,6 +25,7 @@ const useStyles = makeStyles(styles);
 
 export default function RTLNavbarLinks() {
   const classes = useStyles();
+  const [openProfile, setOpenProfile] = React.useState(null);
   const [open, setOpen] = React.useState(null);
   const handleToggle = (event) => {
     if (open && open.contains(event.target)) {
@@ -31,6 +33,16 @@ export default function RTLNavbarLinks() {
     } else {
       setOpen(event.currentTarget);
     }
+  };
+  const handleClickProfile = (event) => {
+    if (openProfile && openProfile.contains(event.target)) {
+      setOpenProfile(null);
+    } else {
+      setOpenProfile(event.currentTarget);
+    }
+  };
+  const handleCloseProfile = () => {
+    setOpenProfile(null);
   };
 
   const handleClose = () => {
@@ -137,6 +149,7 @@ export default function RTLNavbarLinks() {
         color={window.innerWidth > 959 ? "transparent" : "white"}
         justIcon={window.innerWidth > 959}
         simple={!(window.innerWidth > 959)}
+        onClick={handleClickProfile}
         aria-label="Person"
         className={classes.buttonLink}
       >
@@ -145,6 +158,54 @@ export default function RTLNavbarLinks() {
           <p className={classes.linkText}>حساب کاربری</p>
         </Hidden>
       </Button>
+      <Poppers
+        open={Boolean(openProfile)}
+        anchorEl={openProfile}
+        transition
+        disablePortal
+        className={
+          classNames({ [classes.popperClose]: !openProfile }) +
+          " " +
+          classes.popperNav
+        }
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            id="profile-menu-list-grow"
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleCloseProfile}>
+                <MenuList role="menu">
+                  <MenuItem
+                    onClick={handleCloseProfile}
+                    className={classes.dropdownItem}
+                  >
+                    پروفایل
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleCloseProfile}
+                    className={classes.dropdownItem}
+                  >
+                    تنظیمات
+                  </MenuItem>
+                  <Divider light />
+                  <MenuItem
+                    onClick={handleCloseProfile}
+                    className={classes.dropdownItem}
+                  >
+                    خروج
+                  </MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Poppers>
     </div>
   );
 }
