@@ -5,9 +5,10 @@ import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import BubbleChart from "@material-ui/icons/BubbleChart";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
-import Language from "@material-ui/icons/Language";
+// import Language from "@material-ui/icons/Language";
+
 // core components/views for Admin layout
-import DashboardPage from "views/Dashboard/Dashboard.js";
+// import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
@@ -23,8 +24,8 @@ const dashboardRoutes = [
     name: "Dashboard",
     rtlName: "داشبورد",
     icon: Dashboard,
-    component: DashboardPage,
-    layout: "/admin",
+    component: RTLPage,
+    layout: "/rtl",
   },
   {
     path: "/user",
@@ -32,7 +33,7 @@ const dashboardRoutes = [
     rtlName: "حساب کاربری",
     icon: Person,
     component: UserProfile,
-    layout: "/admin",
+    layout: "/rtl",
   },
   {
     path: "/table",
@@ -40,7 +41,7 @@ const dashboardRoutes = [
     rtlName: "لیست جداول",
     icon: "content_paste",
     component: TableList,
-    layout: "/admin",
+    layout: "/rtl",
   },
   {
     path: "/typography",
@@ -48,7 +49,7 @@ const dashboardRoutes = [
     rtlName: "خط",
     icon: LibraryBooks,
     component: Typography,
-    layout: "/admin",
+    layout: "/rtl",
   },
   {
     path: "/icons",
@@ -56,7 +57,7 @@ const dashboardRoutes = [
     rtlName: "آیکون ها",
     icon: BubbleChart,
     component: Icons,
-    layout: "/admin",
+    layout: "/rtl",
   },
   {
     path: "/maps",
@@ -64,7 +65,7 @@ const dashboardRoutes = [
     rtlName: "نقشه",
     icon: LocationOn,
     component: Maps,
-    layout: "/admin",
+    layout: "/rtl",
   },
   {
     path: "/notifications",
@@ -72,14 +73,6 @@ const dashboardRoutes = [
     rtlName: "اطلاعیه ها",
     icon: Notifications,
     component: NotificationsPage,
-    layout: "/admin",
-  },
-  {
-    path: "/rtl-page",
-    name: "RTL Support",
-    rtlName: "پشتیبانی از راست به چپ",
-    icon: Language,
-    component: RTLPage,
     layout: "/rtl",
   },
 ];

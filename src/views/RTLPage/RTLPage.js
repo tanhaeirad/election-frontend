@@ -290,23 +290,23 @@ export default function RTLPage() {
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>اعلان ها</h4>
               <p className={classes.cardCategoryWhite}>
-                يدويا من قبل أصدقائنا من{" "}
+                یکی دوستان من {" "}
                 <a
                   target="_blank"
                   href="https://material-ui-next.com/?ref=creativetime"
                 >
-                  واجهة المستخدم المادية
+                  نیازمند پول است
                 </a>{" "}
-                ونصب من قبل{" "}
+                و قبل از آن{" "}
                 <a
                   target="_blank"
                   href="https://www.creative-tim.com/?ref=mdr-rtl-page"
                 >
-                  الإبداعية تيم
+                  به تیمی برای کار کردن نیاز دارد
                 </a>
-                . يرجى التحقق من{" "}
+                . امید است مشکل او برطرف شود{" "}
                 <a href="#pablo" target="_blank">
-                  وثائق كاملة
+                  به طور کامل
                 </a>
                 .
               </p>
