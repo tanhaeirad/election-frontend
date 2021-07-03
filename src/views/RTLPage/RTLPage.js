@@ -44,7 +44,7 @@ export default function RTLPage() {
             <CardBody>
               <h4 className={classes.cardTitle}>نمودار خطی آرای نامزدها</h4>
               <p className={classes.cardCategory}>
-                آخرین نتایج رأی‌گیری
+                آخرین نتایج رأی‌گیری در استان تهران
               </p>
             </CardBody>
             <CardFooter chart>
@@ -68,7 +68,7 @@ export default function RTLPage() {
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>نمودار میله‌ای آرای نامزدها</h4>
-              <p className={classes.cardCategory}>آخرین نتایج رأی‌گیری</p>
+              <p className={classes.cardCategory}>آخرین نتایج رأی‌گیری در استان تهران</p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
@@ -114,7 +114,7 @@ export default function RTLPage() {
             </CardHeader>
             <CardBody>
               <InteractiveIranMap
-                selectedArea={'esfahan'}
+                selectedArea={'tehran'}
                 defaultAreasColor='200,200,200'
               />
             </CardBody>
