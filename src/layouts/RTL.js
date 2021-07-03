@@ -31,7 +31,7 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/rtl" to="/rtl/rtl-page" />
+    <Redirect from="/rtl" to="/rtl/dashboard" />
   </Switch>
 );
 
@@ -89,6 +89,7 @@ export default function RTL({ ...rest }) {
       window.removeEventListener("resize", resizeFunction);
     };
   }, [mainPanel]);
+
   return (
     <div className={classes.wrapper}>
       <Sidebar

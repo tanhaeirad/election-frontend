@@ -118,8 +118,8 @@ export default function RTLPage() {
           </Card>
         </GridItem>
       </GridContainer>
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="danger">
               <h4 className={classes.cardTitleWhite}>اعلان ها</h4>
