@@ -17,10 +17,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
-import {
-  linearVoteChart,
-  barVoteChart,
-} from "variables/charts.js";
+import { linearVoteChart, barVoteChart } from "variables/charts.js";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -124,7 +121,7 @@ export default function RTLPage() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="danger">
               <h4 className={classes.cardTitleWhite}>اعلان ها</h4>
               <p className={classes.cardCategoryWhite}>
                 لیست اعلان های شما
