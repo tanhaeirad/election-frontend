@@ -18,9 +18,12 @@ var server = [
   'Sign contract for "What are conference organizers afraid of?"',
 ];
 
+var roles = ["Normal User", "Inspector", "Supervisor", "Admin", "unknown"];
+
 module.exports = {
   // these 3 are used to create the tasks lists in TasksCard - Dashboard view
   bugs,
   website,
   server,
+  roles,
 };

@@ -22,7 +22,6 @@ const loginApiCall = async (
     .then((responseJson) => {
       if (responseJson.code === 200) {
         localStorage.setItem("token", responseJson.token);
-
         setShouldRedirect(true);
       } else {
         setSnackbarInfo(true);
