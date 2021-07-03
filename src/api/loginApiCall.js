@@ -1,12 +1,12 @@
 import { LOGIN_URL } from "./apiPath";
 
-const loginApiCall = (
+const loginApiCall = async (
   username,
   password,
   setSnackbarInfo,
   setShouldRedirect
 ) => {
-  fetch(`${LOGIN_URL}`, {
+  await fetch(`${LOGIN_URL}`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(
@@ -22,6 +22,7 @@ const loginApiCall = (
     .then((responseJson) => {
       if (responseJson.code === 200) {
         localStorage.setItem("token", responseJson.token);
+
         setShouldRedirect(true);
       } else {
         setSnackbarInfo(true);

@@ -74,7 +74,7 @@ export default function Login() {
   return shouldRedirect ? (
     <Redirect from="/login" to="/rtl/dashboard" />
   ) : (
-    <GridContainer>
+    <GridContainer justify="center" style={{ direction: "rtl" }}>
       <GridItem xs={12} sm={12} md={4}>
         <Card>
           <CardHeader color="primary">
@@ -99,6 +99,7 @@ export default function Login() {
                 <CustomInput
                   labelText="پسورد"
                   id="password"
+                  rtlActive
                   inputProps={{
                     type: "password",
                     onChange: (e) => (password = e.target.value),
@@ -106,7 +107,6 @@ export default function Login() {
                   formControlProps={{
                     fullWidth: true,
                   }}
-                  rtlActive
                 />
               </GridItem>
             </GridContainer>
