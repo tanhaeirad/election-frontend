@@ -18,8 +18,8 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import {
-  dailySalesChart,
-  emailsSubscriptionChart,
+  linearVoteChart,
+  barVoteChart,
 } from "variables/charts.js";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
@@ -32,13 +32,13 @@ export default function RTLPage() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
           <Card chart>
-            <CardHeader color="success">
+            <CardHeader color="rose">
               <ChartistGraph
                 className="ct-chart"
-                data={dailySalesChart.data}
+                data={linearVoteChart.data}
                 type="Line"
-                options={dailySalesChart.options}
-                listener={dailySalesChart.animation}
+                options={linearVoteChart.options}
+                listener={linearVoteChart.animation}
               />
             </CardHeader>
             <CardBody>
@@ -59,11 +59,11 @@ export default function RTLPage() {
             <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
-                data={emailsSubscriptionChart.data}
+                data={barVoteChart.data}
                 type="Bar"
-                options={emailsSubscriptionChart.options}
-                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                listener={emailsSubscriptionChart.animation}
+                options={barVoteChart.options}
+                responsiveOptions={barVoteChart.responsiveOptions}
+                listener={barVoteChart.animation}
               />
             </CardHeader>
             <CardBody>
@@ -81,7 +81,7 @@ export default function RTLPage() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="success">
               <h4 className={classes.cardTitleWhite}>وضعیت آرای کاندیدها</h4>
               <p className={classes.cardCategoryWhite}>
                 کاندیدهای استان تهران
@@ -91,19 +91,13 @@ export default function RTLPage() {
               <Paper elevation={0} className={classes.paper}>
                 <Table
                   stickyHeader
-                  tableHeaderColor="info"
-                  tableHead={["کد", "نام کاندید", "میزان آرا"]}
+                  tableHeaderColor="success"
+                  tableHead={["کد", "نام کاندید", "میزان رأی"]}
                   tableData={[
                     ["1", "احمد حسینی	", "36,738"],
                     ["2", "مینا رضایی	", "23,789"],
                     ["3", "مبینا احمدپور ", "56,142"],
                     ["4", "جلال آقایی	", "38,735"],
-                    ["5", "مریم سعیدمهر	", "36,738"],
-                    ["6", "امیررضا تنهایی راد	", "21,789"],
-                    ["7", "آرش کاظمی	", "86,142"],
-                    ["8", "محمد مهدویان	", "38,705"],
-                    ["9", "فرشته حسن پور	", "3,638"],
-                    ["10", "خداداد عزیزی	", "2,379"],
                   ]}
                 />
               </Paper>
@@ -112,14 +106,17 @@ export default function RTLPage() {
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
         <Card>
-            <CardHeader color="primary">
+            <CardHeader color="info">
               <h4 className={classes.cardTitleWhite}>نقشه مناطق</h4>
               <p className={classes.cardCategoryWhite}>
                 منطقه مورد نظر را انتخاب کنید
               </p>
             </CardHeader>
             <CardBody>
-              <InteractiveIranMap/>
+              <InteractiveIranMap
+                selectedArea={'esfahan'}
+                defaultAreasColor='200,200,200'
+              />
             </CardBody>
           </Card>
         </GridItem>
