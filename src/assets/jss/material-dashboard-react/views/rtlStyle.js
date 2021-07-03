@@ -6,6 +6,11 @@ import {
 } from "assets/jss/material-dashboard-react.js";
 
 const rtlStyle = {
+  paper: {
+    height: 600,
+    width: "100%",
+    overflow: "auto",
+  },
   successText: {
     color: successColor[0],
   },
