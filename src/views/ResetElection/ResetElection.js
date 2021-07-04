@@ -95,6 +95,9 @@ export default function ResetElection() {
             <Button round color="danger" onClick={() => null}>
               ریست کردن انتخابات
             </Button>
+            <Button round color="warning" onClick={() => null}>
+              پایان رأی گیری
+            </Button>
           </CardBody>
         </Card>
       </GridItem>

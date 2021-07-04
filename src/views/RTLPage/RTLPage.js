@@ -19,6 +19,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import getElectionStatus from "api/getElectionStatus";
 import { linearVoteChart, barVoteChart } from "variables/charts.js";
+import getElectionResult from "api/getElectionResult";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
 const status = {
@@ -34,10 +35,28 @@ const useStyles = makeStyles(styles);
 const RTLPage = () => {
   const classes = useStyles();
   const [electionStatus, setElectionStatus] = React.useState('');
+  const [voteChartData, setVoteChartData] = React.useState({
+    Linear: {
+      labels: ["احمد حسینی", "مینا رضایی", "مبینا احمدپور", "جلال آقایی"],
+      series: [[0, 36738, 23789, 56142, 38735]],
+    },
+    Bar: {
+      labels: ["احمد حسینی", "مینا رضایی", "مبینا احمدپور", "جلال آقایی"],
+      series: [[36738, 23789, 56142, 38735]],
+    }
+  });
+  const [voteTableDate, setVoteTableData] = React.useState([
+    [ '1', 'احمد حسینی', '36738' ],
+    [ '2', 'مینا رضایی', '23789' ],
+    [ '3', 'مبینا احمدپور', '56142' ],
+    [ '4', 'جلال آقایی', '38735' ]
+  ]);
+
   React.useEffect(() => {
     const fetchStatus = async () => {
       setElectionStatus(status[await getElectionStatus(1)]);
     };
+    getElectionResult(1, setVoteChartData, setVoteTableData);
     fetchStatus();
   });
 
@@ -49,7 +68,7 @@ const RTLPage = () => {
             <CardHeader color="rose">
               <ChartistGraph
                 className="ct-chart"
-                data={linearVoteChart.data}
+                data={voteChartData.Linear}
                 type="Line"
                 options={linearVoteChart.options}
                 listener={linearVoteChart.animation}
@@ -73,7 +92,7 @@ const RTLPage = () => {
             <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
-                data={barVoteChart.data}
+                data={voteChartData.Bar}
                 type="Bar"
                 options={barVoteChart.options}
                 responsiveOptions={barVoteChart.responsiveOptions}
@@ -107,12 +126,7 @@ const RTLPage = () => {
                   stickyHeader
                   tableHeaderColor="success"
                   tableHead={["کد", "نام کاندید", "میزان رأی"]}
-                  tableData={[
-                    ["1", "احمد حسینی	", "36,738"],
-                    ["2", "مینا رضایی	", "23,789"],
-                    ["3", "مبینا احمدپور ", "56,142"],
-                    ["4", "جلال آقایی	", "38,735"],
-                  ]}
+                  tableData={voteTableDate}
                 />
               </Paper>
             </CardBody>

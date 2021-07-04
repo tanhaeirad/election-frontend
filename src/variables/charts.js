@@ -16,10 +16,6 @@ var delays2 = 80,
 // #############################
 
 const linearVoteChart = {
-  data: {
-    labels: ["احمد حسینی", "مینا رضایی", "مبینا احمدپور", "جلال آقایی"],
-    series: [[0, 36738, 23789, 56142, 38735]],
-  },
   options: {
     lineSmooth: Chartist.Interpolation.cardinal({
       tension: 0,
@@ -70,10 +66,6 @@ const linearVoteChart = {
 // #############################
 
 const barVoteChart = {
-  data: {
-    labels: ["احمد حسینی", "مینا رضایی", "مبینا احمدپور", "جلال آقایی"],
-    series: [[36738, 23789, 56142, 38735]],
-  },
   options: {
     axisX: {
       showGrid: false,

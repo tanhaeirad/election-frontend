@@ -14,6 +14,7 @@ import Typography from "views/Typography/Typography.js";
 import Icons from "views/Icons/Icons.js";
 import Maps from "views/Maps/Maps.js";
 import ResetElection from "views/ResetElection/ResetElection";
+import addElectionResult from "views/AddElectionResult/AddElectionResult";
 import NotificationsPage from "views/Notifications/Notifications.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
@@ -42,7 +43,7 @@ const dashboardRoutes = [
     name: "Enter Election Result",
     rtlName: "وارد کردن نتیجه انتخابات",
     icon: AddComment,
-    component: ResetElection,
+    component: addElectionResult,
     layout: "/rtl",
     role: ["Inspector", "Supervisor"],
   },
