@@ -10,11 +10,12 @@ const getElectionStatus = async (election_id) => {
       if (responseJson.code === 200) {
         return responseJson.msg;
       }
-      return responseJson.code;
+      return "unknown";
     })
     .catch(() => {
-      return -1;
+      return "unknown";
     });
+  return "unknown";
 };
 
 export default getElectionStatus;

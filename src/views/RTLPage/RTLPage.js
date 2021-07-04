@@ -17,13 +17,30 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
+import getElectionStatus from "api/getElectionStatus";
 import { linearVoteChart, barVoteChart } from "variables/charts.js";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
+const status = {
+  "not init yet": "رأی گیری هنوز آغاز نشده است.",
+  "pending": "رأی گیری در جریان است.",
+  "rejected": "رأی گیری مردود اعلام شده است.",
+  "accepted": "رأی گیری تایید شده است.",
+  "unknown": "وضعیت رأی‌گیری نامشخص است.",
+};
+
 const useStyles = makeStyles(styles);
 
-export default function RTLPage() {
+const RTLPage = () => {
   const classes = useStyles();
+  const [electionStatus, setElectionStatus] = React.useState('');
+  React.useEffect(() => {
+    const fetchStatus = async () => {
+      setElectionStatus(status[await getElectionStatus(1)]);
+    };
+    fetchStatus();
+  });
+
   return (
     <div>
       <GridContainer>
@@ -46,7 +63,7 @@ export default function RTLPage() {
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> ۴ دقیقه پیش
+                <AccessTime /> { electionStatus }
               </div>
             </CardFooter>
           </Card>
@@ -69,7 +86,7 @@ export default function RTLPage() {
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> انتخابات از صبح امروز شروع شده است
+                <AccessTime /> { electionStatus }
               </div>
             </CardFooter>
           </Card>
@@ -111,7 +128,9 @@ export default function RTLPage() {
             </CardHeader>
             <CardBody>
               <InteractiveIranMap
+                height={600}
                 selectedArea={'tehran'}
+                onClick={(e) => console.log(e)}
                 defaultAreasColor='200,200,200'
               />
             </CardBody>
@@ -158,4 +177,6 @@ export default function RTLPage() {
       </GridContainer>
     </div>
   );
-}
+};
+
+export default RTLPage;

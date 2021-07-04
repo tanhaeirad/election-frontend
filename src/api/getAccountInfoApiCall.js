@@ -1,7 +1,7 @@
-import { GET_ACCOUNT_INFO } from "./apiPath";
+import { GET_ACCOUNT_INFO_URL } from "./apiPath";
 
 const getAccountInfoApiCall = async (username) => {
-  await fetch(`${GET_ACCOUNT_INFO}/${username}/`, {
+  await fetch(`${GET_ACCOUNT_INFO_URL}/${username}/`, {
     method: "get",
     headers: { "Content-Type": "application/json" },
   })

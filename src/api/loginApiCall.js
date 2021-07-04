@@ -1,4 +1,5 @@
 import { LOGIN_URL } from "./apiPath";
+import getAccountInfoApiCall from "api/getAccountInfoApiCall";
 
 const loginApiCall = async (
   username,
@@ -21,7 +22,9 @@ const loginApiCall = async (
     .then((response) => response.json())
     .then((responseJson) => {
       if (responseJson.code === 200) {
+        localStorage.setItem("username", username);
         localStorage.setItem("token", responseJson.token);
+        localStorage.setItem("role", getAccountInfoApiCall(username));
         setShouldRedirect(true);
       } else {
         setSnackbarInfo(true);

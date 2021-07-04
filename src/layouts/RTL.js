@@ -89,11 +89,10 @@ export default function RTL({ ...rest }) {
       window.removeEventListener("resize", resizeFunction);
     };
   }, [mainPanel]);
-
   return (
     <div className={classes.wrapper}>
       <Sidebar
-        routes={routes}
+        routes={routes.filter((item) => item.role.includes(localStorage.role))}
         logoText={"سامانه رأی‌گیری"}
         logo={logo}
         image={image}
