@@ -1,0 +1,189 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "بغداد"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.306, 44.3827]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "صلاح‌الدین"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.3421, 43.7294]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "دیاله"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.9882, 45.1046]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "واسط"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [32.6139, 45.5635]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "میسان"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [31.8089, 47.0739]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "بصره"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [30.6802, 47.5605]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "ذی‌قار"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [31.191, 46.4203]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "مثنی"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [30.4381, 45.2843]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "قادسیه"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [31.6081, 45.1075]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "بابل"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [32.6833, 44.5099]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "کربلا"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [32.502, 43.7651]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "نجف"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [30.9322, 43.7551]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "انبار"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.2317, 41.5307]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "نینوا"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.9228, 42.7469]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "دهوک"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [37.0875, 43.2281]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "اربیل"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [36.2371, 44.1806]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "کرکوک"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.3281, 44.0354]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "سلیمانیه"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.332, 45.4331]
+      }
+    }
+  ]
+}

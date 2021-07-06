@@ -2,7 +2,6 @@
 import React from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
-import InteractiveIranMap from "iran-map";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -20,6 +19,7 @@ import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import getElectionStatus from "api/getElectionStatus";
 import { linearVoteChart, barVoteChart } from "variables/charts.js";
 import getElectionResult from "api/getElectionResult";
+import IraqMap from "views/IraqMap/iraq";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
 const status = {
@@ -141,12 +141,9 @@ const RTLPage = () => {
               </p>
             </CardHeader>
             <CardBody>
-              <InteractiveIranMap
-                height={600}
-                selectedArea={'tehran'}
-                onClick={(e) => console.log(e)}
-                defaultAreasColor='200,200,200'
-              />
+              <Paper elevation={0} className={classes.paper}>
+                <IraqMap />
+              </Paper>
             </CardBody>
           </Card>
         </GridItem>
