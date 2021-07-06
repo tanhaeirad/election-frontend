@@ -1,73 +1,61 @@
-import React, { Component } from "react";
+import React from "react";
 import { Map, GeoJSON } from "react-leaflet";
-import mapData from "variables/Iraq.json";
-// import "leaflet/dist/leaflet.css";
+import mapData from "../../variables/IraqMap.json";
+import "leaflet/dist/leaflet.css";
 
-class MyMap extends Component {
-  state = { color: "#ffff00" };
+const MyMap = () => {
+  const state = { color: "#ffff00" };
 
-  colors = ["green", "blue", "yellow", "orange", "grey"];
-
-  componentDidMount() {
-    console.log(mapData);
-  }
-
-  countryStyle = {
-    fillColor: "red",
+  const countryStyle = {
+    fillColor: "gray",
     fillOpacity: 1,
     color: "black",
     weight: 2,
   };
 
-  printMesssageToConsole = () => {
-    console.log("Clicked");
-  };
-
-  changeCountryColor = (event) => {
+  const changeCountryColor = (event) => {
+    // console.log(event.target.feature.properties.ADMIN);
     event.target.setStyle({
       color: "green",
-      fillColor: this.state.color,
+      fillColor: state.color,
       fillOpacity: 1,
     });
   };
 
-  onEachCountry = (country, layer) => {
-    const countryName = country.properties.ADMIN;
-    console.log(countryName);
-    layer.bindPopup(countryName);
-
-    layer.options.fillOpacity = Math.random(); //0-1 (0.1, 0.2, 0.3)
-    // const colorIndex = Math.floor(Math.random() * this.colors.length);
-    // layer.options.fillColor = this.colors[colorIndex]; //0
-
+  const onEachProvince = (province, layer) => {
+    const provinceName = province.properties.ADMIN;
+    layer.bindPopup(provinceName);
+    console.log(layer);
+    layer.options.fillOpacity = Math.random();
     layer.on({
-      click: this.changeCountryColor,
+      click: changeCountryColor,
     });
   };
 
-  colorChange = (event) => {
-    this.setState({ color: event.target.value });
-  };
+  // const colorChange = (event) => {
+  //   this.setState({ color: event.target.value });
+  // };
 
-  render() {
-    return (
-      <div>
-        <h1 style={{ textAlign: "center" }}>My Map</h1>
-        <Map style={{ height: "80vh" }} zoom={2} center={[20, 100]}>
-          <GeoJSON
-            style={this.countryStyle}
-            data={mapData.features}
-            onEachFeature={this.onEachCountry}
-          />
-        </Map>
-        <input
-          type="color"
-          value={this.state.color}
-          onChange={this.colorChange}
+  return (
+    <div>
+      <Map
+        style={{ height: "64.5vh", width: "40wh", backgroundColor: "white" }}
+        zoom={6}
+        center={[33, 44]}
+      >
+        <GeoJSON
+          style={countryStyle}
+          data={mapData.features}
+          onEachFeature={onEachProvince}
         />
-      </div>
-    );
-  }
-}
+      </Map>
+      {/* <input
+        type="color"
+        value={this.state.color}
+        onChange={this.colorChange}
+      /> */}
+    </div>
+  );
+};
 
 export default MyMap;

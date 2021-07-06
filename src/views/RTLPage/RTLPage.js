@@ -141,6 +141,7 @@ const RTLPage = () => {
               </p>
             </CardHeader>
             <CardBody>
+              <div id="mapid"></div>
               <IraqMap />
             </CardBody>
           </Card>

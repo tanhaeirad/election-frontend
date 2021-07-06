@@ -6,6 +6,7 @@ import {
 } from "assets/jss/material-dashboard-react.js";
 
 const rtlStyle = {
+  mapid: { height: "180px" },
   paper: {
     height: 600,
     width: "100%",
