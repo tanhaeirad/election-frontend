@@ -141,9 +141,7 @@ const RTLPage = () => {
               </p>
             </CardHeader>
             <CardBody>
-              <Paper elevation={0} className={classes.paper}>
-                <IraqMap />
-              </Paper>
+              <IraqMap />
             </CardBody>
           </Card>
         </GridItem>
