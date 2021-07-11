@@ -14,7 +14,6 @@ const MyMap = () => {
   };
 
   const changeCountryColor = (event) => {
-    // console.log(event.target.feature.properties.ADMIN);
     event.target.setStyle({
       color: "green",
       fillColor: state.color,
@@ -25,16 +24,12 @@ const MyMap = () => {
   const onEachProvince = (province, layer) => {
     const provinceName = province.properties.ADMIN;
     layer.bindPopup(provinceName);
-    console.log(layer);
+    layer.bindTooltip(provinceName, { permanent: true, direction: "center" });
     layer.options.fillOpacity = Math.random();
     layer.on({
       click: changeCountryColor,
     });
   };
-
-  // const colorChange = (event) => {
-  //   this.setState({ color: event.target.value });
-  // };
 
   return (
     <div>
@@ -49,11 +44,6 @@ const MyMap = () => {
           onEachFeature={onEachProvince}
         />
       </Map>
-      {/* <input
-        type="color"
-        value={this.state.color}
-        onChange={this.colorChange}
-      /> */}
     </div>
   );
 };
