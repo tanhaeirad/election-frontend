@@ -3,7 +3,10 @@ import { GET_ELECTION_INFO_URL } from "./apiPath";
 const getElectionStatus = async (election_id) => {
   await fetch(`${GET_ELECTION_INFO_URL}/${election_id}/`, {
     method: "get",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
   })
     .then((response) => {
       if (!response.ok) throw new Error(response.status);

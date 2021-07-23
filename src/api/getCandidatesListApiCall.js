@@ -3,7 +3,10 @@ import { GET_CANDIDATES_LIST_URL } from "./apiPath";
 const getCandidateListApiCall = async (election_id, setCandidateList) => {
   await fetch(GET_CANDIDATES_LIST_URL, {
     method: "get",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
   })
     .then((response) => {
       if (!response.ok) throw new Error(response.status);

@@ -7,7 +7,10 @@ const addElectionResult = async (data, kind, setSnackbarInfo) => {
   if (kind === "Inspector") {
     await fetch(ADD_ELECTION_RESULT_BY_INSPECTOR_URL, {
       method: "post",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
       body: JSON.stringify(data, 2, 0),
     })
       .then((response) => {
