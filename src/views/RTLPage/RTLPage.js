@@ -34,6 +34,7 @@ const useStyles = makeStyles(styles);
 
 const RTLPage = () => {
   const classes = useStyles();
+  const [city, setCity] = React.useState('الأنبار');
   const [electionStatus, setElectionStatus] = React.useState('');
   const [voteChartData, setVoteChartData] = React.useState({
     Linear: {
@@ -77,8 +78,8 @@ const RTLPage = () => {
             <CardBody>
               <h4 className={classes.cardTitle}>نمودار خطی آرای نامزدها</h4>
               <p className={classes.cardCategory}>
-                آخرین نتایج رأی‌گیری در استان تهران
-              </p>
+               {`آخرین نتایج رأی‌گیری در استان ${city}`}
+               </p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
@@ -101,7 +102,7 @@ const RTLPage = () => {
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>نمودار میله‌ای آرای نامزدها</h4>
-              <p className={classes.cardCategory}>آخرین نتایج رأی‌گیری در استان تهران</p>
+              <p className={classes.cardCategory}>{`آخرین نتایج رأی‌گیری در استان ${city}`}</p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
@@ -117,7 +118,7 @@ const RTLPage = () => {
             <CardHeader color="success">
               <h4 className={classes.cardTitleWhite}>وضعیت آرای کاندیدها</h4>
               <p className={classes.cardCategoryWhite}>
-                کاندیدهای استان تهران
+                {`کاندیدهای استان ${city}`}
               </p>
             </CardHeader>
             <CardBody>
@@ -142,7 +143,7 @@ const RTLPage = () => {
             </CardHeader>
             <CardBody>
               <div id="mapid"></div>
-              <IraqMap />
+              <IraqMap city={city} setCity={setCity} />
             </CardBody>
           </Card>
         </GridItem>

@@ -1,37 +1,42 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Map, GeoJSON } from "react-leaflet";
 import mapData from "../../variables/IraqMap.json";
 import "leaflet/dist/leaflet.css";
 
-const MyMap = () => {
+const IraqMap = ({ city, setCity }) => {
   const state = { color: "#ffff00" };
-
-  const countryStyle = {
+  const cityStyle = {
     fillColor: "gray",
-    fillOpacity: 1,
+    fillOpacity: 0.5,
     color: "black",
     weight: 2,
   };
 
-  const changeCountryColor = (event) => {
+  const changeCityColor = (event) => {
     event.target.setStyle({
-      color: "green",
+      color: "black",
       fillColor: state.color,
       fillOpacity: 1,
     });
+    setCity(event.target.feature.properties.ADMIN);
   };
 
   const onEachProvince = (province, layer) => {
     const provinceName = province.properties.ADMIN;
-    layer.bindPopup(provinceName);
+    // layer.bindPopup(provinceName);
     layer.bindTooltip(provinceName, {
-      // permanent: true,
-      sticky: true,
-      direction: "left",
+      permanent: true,
+      direction: "top",
+      opacity: 1,
+      offset: [30, 3],
     });
-    layer.options.fillOpacity = Math.random();
+    if (province.properties.ADMIN === city) {
+      layer.options.fillColor = state.color;
+      layer.options.fillOpacity = 1;
+    }
     layer.on({
-      click: changeCountryColor,
+      click: changeCityColor,
     });
   };
 
@@ -43,7 +48,7 @@ const MyMap = () => {
         center={[33, 44]}
       >
         <GeoJSON
-          style={countryStyle}
+          style={cityStyle}
           data={mapData.features}
           onEachFeature={onEachProvince}
         />
@@ -52,4 +57,9 @@ const MyMap = () => {
   );
 };
 
-export default MyMap;
+IraqMap.propTypes = {
+  city: PropTypes.string.isRequired,
+  setCity: PropTypes.func.isRequired,
+};
+
+export default IraqMap;
