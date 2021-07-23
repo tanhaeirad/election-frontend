@@ -7,28 +7,19 @@ const loginApiCall = async (
   setSnackbarInfo,
   setShouldRedirect
 ) => {
-  await fetch(`${LOGIN_URL}`, {
+  await fetch(LOGIN_URL, {
     method: "post",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(
-      {
-        username: username,
-        password: password,
-      },
-      2,
-      0
-    ),
+    body: JSON.stringify({ username: username, password: password }, 2, 0),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) setSnackbarInfo(true);
+      else return response.json();
+    })
     .then((responseJson) => {
-      if (responseJson.code === 200) {
-        localStorage.setItem("username", username);
-        localStorage.setItem("token", responseJson.token);
-        localStorage.setItem("role", getAccountInfoApiCall(username));
-        setShouldRedirect(true);
-      } else {
-        setSnackbarInfo(true);
-      }
+      localStorage.setItem("username", username);
+      localStorage.setItem("token", responseJson.token);
+      getAccountInfoApiCall(username, 1, setShouldRedirect);
     })
     .catch(() => {
       setSnackbarInfo(true);

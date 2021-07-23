@@ -5,26 +5,26 @@ import {
 
 const addElectionResult = async (data, kind, setSnackbarInfo) => {
   if (kind === "Inspector") {
-    await fetch(`${ADD_ELECTION_RESULT_BY_INSPECTOR_URL}`, {
+    await fetch(ADD_ELECTION_RESULT_BY_INSPECTOR_URL, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data, 2, 0),
     })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson.code === 200) {
-          setSnackbarInfo({
-            open: true,
-            message: "نتایج با موفقیت ثبت شد.",
-            color: "success",
-          });
-        } else {
+      .then((response) => {
+        if (!response.ok)
           setSnackbarInfo({
             open: true,
             message: "در ثبت نتایج خطایی رخ داده است.",
             color: "danger",
           });
-        }
+        else return response.json();
+      })
+      .then(() => {
+        setSnackbarInfo({
+          open: true,
+          message: "نتایج با موفقیت ثبت شد.",
+          color: "success",
+        });
       })
       .catch(() => {
         setSnackbarInfo({
@@ -34,26 +34,26 @@ const addElectionResult = async (data, kind, setSnackbarInfo) => {
         });
       });
   } else if (kind === "Supervisor") {
-    await fetch(`${ADD_ELECTION_RESULT_BY_SUPERVISOR_URL}`, {
+    await fetch(ADD_ELECTION_RESULT_BY_SUPERVISOR_URL, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data, 2, 0),
     })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson.code === 200) {
-          setSnackbarInfo({
-            open: true,
-            message: "نتایج با موفقیت ثبت شد.",
-            color: "success",
-          });
-        } else {
+      .then((response) => {
+        if (!response.ok)
           setSnackbarInfo({
             open: true,
             message: "در ثبت نتایج خطایی رخ داده است.",
             color: "danger",
           });
-        }
+        else return response.json();
+      })
+      .then(() => {
+        setSnackbarInfo({
+          open: true,
+          message: "نتایج با موفقیت ثبت شد.",
+          color: "success",
+        });
       })
       .catch(() => {
         setSnackbarInfo({

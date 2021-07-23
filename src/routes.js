@@ -27,7 +27,7 @@ const dashboardRoutes = [
     icon: Dashboard,
     component: RTLPage,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/user",
@@ -36,7 +36,7 @@ const dashboardRoutes = [
     icon: Person,
     component: UserProfile,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/enter-election-result",
@@ -54,7 +54,7 @@ const dashboardRoutes = [
     icon: "content_paste",
     component: TableList,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/typography",
@@ -63,7 +63,7 @@ const dashboardRoutes = [
     icon: LibraryBooks,
     component: Typography,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/icons",
@@ -72,7 +72,7 @@ const dashboardRoutes = [
     icon: BubbleChart,
     component: Icons,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/maps",
@@ -81,7 +81,7 @@ const dashboardRoutes = [
     icon: LocationOn,
     component: Maps,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/notifications",
@@ -90,7 +90,7 @@ const dashboardRoutes = [
     icon: Notifications,
     component: NotificationsPage,
     layout: "/rtl",
-    role: ["Inspector", "Supervisor", "Admin", "NormalUser"],
+    role: ["Inspector", "Supervisor", "Admin", "Visitor"],
   },
   {
     path: "/reset-election",

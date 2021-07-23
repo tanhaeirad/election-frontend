@@ -1,15 +1,24 @@
 import { GET_ACCOUNT_INFO_URL } from "./apiPath";
 
-const getAccountInfoApiCall = async (username) => {
-  await fetch(`${GET_ACCOUNT_INFO_URL}/${username}/`, {
+const getAccountInfoApiCall = (username, verbose, setShouldRedirect) => {
+  fetch(GET_ACCOUNT_INFO_URL, {
     method: "get",
     headers: { "Content-Type": "application/json" },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) return "unknown";
+      else return response.json();
+    })
     .then((responseJson) => {
-      if (responseJson.code === 200) {
-        return responseJson.kind;
-      }
+      responseJson.filter((e) => {
+        if (e.username === username) {
+          if (verbose) {
+            localStorage.setItem("role", e.kind);
+            setShouldRedirect(true);
+          }
+          return e.kind;
+        }
+      });
       return "unknown";
     })
     .catch(() => {

@@ -1,16 +1,16 @@
-import { ELECTION_URL } from "./apiPath";
+import { GET_ELECTION_INFO_URL } from "./apiPath";
 
 const getElectionStatus = async (election_id) => {
-  await fetch(`${ELECTION_URL}/${election_id}/status/`, {
+  await fetch(`${GET_ELECTION_INFO_URL}/${election_id}/`, {
     method: "get",
     headers: { "Content-Type": "application/json" },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      else return response.json();
+    })
     .then((responseJson) => {
-      if (responseJson.code === 200) {
-        return responseJson.msg;
-      }
-      return "unknown";
+      return responseJson.status;
     })
     .catch(() => {
       return "unknown";

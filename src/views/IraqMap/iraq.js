@@ -24,7 +24,11 @@ const MyMap = () => {
   const onEachProvince = (province, layer) => {
     const provinceName = province.properties.ADMIN;
     layer.bindPopup(provinceName);
-    layer.bindTooltip(provinceName, { permanent: true, direction: "center" });
+    layer.bindTooltip(provinceName, {
+      // permanent: true,
+      sticky: true,
+      direction: "left",
+    });
     layer.options.fillOpacity = Math.random();
     layer.on({
       click: changeCountryColor,
