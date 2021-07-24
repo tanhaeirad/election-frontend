@@ -4,8 +4,7 @@ import { Map, GeoJSON } from "react-leaflet";
 import mapData from "../../variables/IraqMap.json";
 import "leaflet/dist/leaflet.css";
 
-const IraqMap = ({ setCity }) => {
-  // const state = { color: "#ffff00" };
+const IraqMap = ({ setSnackbarInfo }) => {
   const cityStyle = {
     fillColor: "gray",
     fillOpacity: 0.5,
@@ -14,22 +13,24 @@ const IraqMap = ({ setCity }) => {
   };
 
   const changeCityColor = (event) => {
-    setCity(event.target.feature.properties.ADMIN);
+    // setCity(event.target.feature.properties.ADMIN);
+    if (event.target.feature.properties.ADMIN !== "الأنبار") {
+      setSnackbarInfo({
+        open: true,
+        message: `در حال حاضر در استان ${event.target.feature.properties.ADMIN} انتخاباتی وجود ندارد`,
+        color: "info",
+      });
+    }
   };
 
   const onEachProvince = (province, layer) => {
     const provinceName = province.properties.ADMIN;
-    // layer.bindPopup(provinceName);
     layer.bindTooltip(provinceName, {
       permanent: true,
       direction: "top",
       opacity: 1,
       offset: [30, 3],
     });
-    // if (province.properties.ADMIN === city) {
-    //   layer.options.fillColor = state.color;
-    //   layer.options.fillOpacity = 1;
-    // }
     layer.on({
       click: changeCityColor,
     });
@@ -53,8 +54,8 @@ const IraqMap = ({ setCity }) => {
 };
 
 IraqMap.propTypes = {
-  // city: PropTypes.string.isRequired,
-  setCity: PropTypes.func.isRequired,
+  setSnackbarInfo: PropTypes.func.isRequired,
+  // setCity: PropTypes.func.isRequired,
 };
 
 export default IraqMap;

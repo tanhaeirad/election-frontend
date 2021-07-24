@@ -18,6 +18,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import getElectionStatus from "api/getElectionStatus";
 import { linearVoteChart, barVoteChart } from "variables/charts.js";
 import getElectionResult from "api/getElectionResult";
+import Snackbar from "components/Snackbar/Snackbar";
 import IraqMap from "views/IraqMap/iraq";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
@@ -25,7 +26,12 @@ const useStyles = makeStyles(styles);
 
 const RTLPage = () => {
   const classes = useStyles();
-  const [city, setCity] = React.useState('الأنبار');
+  const [snackbarInfo, setSnackbarInfo] = React.useState({
+    open: false,
+    message: "",
+    color: "danger",
+  });
+  const [city] = React.useState('الأنبار');
   const [electionStatus, setElectionStatus] = React.useState('');
   const [voteData, setVoteData] = React.useState({
     chart: {
@@ -132,11 +138,21 @@ const RTLPage = () => {
             </CardHeader>
             <CardBody>
               <div id="mapid"></div>
-              <IraqMap setCity={setCity} />
+              <IraqMap setSnackbarInfo={setSnackbarInfo} />
             </CardBody>
           </Card>
         </GridItem>
       </GridContainer>
+      <Snackbar
+        message={snackbarInfo.message}
+        rtlActive
+        open={snackbarInfo.open}
+        closeNotification={() =>
+          setSnackbarInfo({ open: false, message: "", color: "danger" })
+        }
+        place="br"
+        color={snackbarInfo.color}
+      />
     </div>
   );
 };
