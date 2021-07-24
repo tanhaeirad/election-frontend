@@ -4,7 +4,7 @@ import { Map, GeoJSON } from "react-leaflet";
 import mapData from "../../variables/IraqMap.json";
 import "leaflet/dist/leaflet.css";
 
-const IraqMap = (setCity) => {
+const IraqMap = ({ setCity }) => {
   // const state = { color: "#ffff00" };
   const cityStyle = {
     fillColor: "gray",
