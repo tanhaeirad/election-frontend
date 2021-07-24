@@ -21,7 +21,7 @@ const linearVoteChart = {
       tension: 0,
     }),
     low: 0,
-    high: 60000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    high: 60, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
     chartPadding: {
       top: 0,
       right: 0,
@@ -71,7 +71,7 @@ const barVoteChart = {
       showGrid: false,
     },
     low: 0,
-    high: 60000,
+    high: 60,
     chartPadding: {
       top: 0,
       right: 5,
