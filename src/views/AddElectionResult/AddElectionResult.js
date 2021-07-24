@@ -144,7 +144,11 @@ export default function AddElectionResult() {
         rtlActive
         open={snackbarInfo.open}
         closeNotification={() =>
-          setSnackbarInfo({ open: false, message: "", color: "danger" })
+          setSnackbarInfo({
+            open: false,
+            message: snackbarInfo.message,
+            color: snackbarInfo.color,
+          })
         }
         place="br"
         color={snackbarInfo.color}
