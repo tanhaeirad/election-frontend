@@ -15,7 +15,6 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import getElectionStatus from "api/getElectionStatus";
 import { linearVoteChart, barVoteChart } from "variables/charts.js";
 import getElectionResult from "api/getElectionResult";
@@ -133,45 +132,7 @@ const RTLPage = () => {
             </CardHeader>
             <CardBody>
               <div id="mapid"></div>
-              <IraqMap city={city} setCity={setCity} />
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer>
-      <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={8}>
-          <Card>
-            <CardHeader color="danger">
-              <h4 className={classes.cardTitleWhite}>اعلان ها</h4>
-              <p className={classes.cardCategoryWhite}>
-                لیست اعلان های شما
-              </p>
-            </CardHeader>
-            <CardBody>
-              <SnackbarContent
-                message={
-                  'این یک اعلان است که با کلاس color="warning" ایجاد شده است.'
-                }
-                close
-                rtlActive
-                color="warning"
-              />
-              <SnackbarContent
-                message={
-                  'این یک اعلان است که با کلاس color="primary" ایجاد شده است.'
-                }
-                close
-                rtlActive
-                color="primary"
-              />
-              <SnackbarContent
-                message={
-                  'این یک اعلان است که با کلاس color="success" ایجاد شده است'
-                }
-                close
-                rtlActive
-                color="success"
-              />
+              <IraqMap setCity={setCity} />
             </CardBody>
           </Card>
         </GridItem>

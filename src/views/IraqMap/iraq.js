@@ -4,8 +4,8 @@ import { Map, GeoJSON } from "react-leaflet";
 import mapData from "../../variables/IraqMap.json";
 import "leaflet/dist/leaflet.css";
 
-const IraqMap = ({ city, setCity }) => {
-  const state = { color: "#ffff00" };
+const IraqMap = (setCity) => {
+  // const state = { color: "#ffff00" };
   const cityStyle = {
     fillColor: "gray",
     fillOpacity: 0.5,
@@ -14,11 +14,6 @@ const IraqMap = ({ city, setCity }) => {
   };
 
   const changeCityColor = (event) => {
-    event.target.setStyle({
-      color: "black",
-      fillColor: state.color,
-      fillOpacity: 1,
-    });
     setCity(event.target.feature.properties.ADMIN);
   };
 
@@ -31,10 +26,10 @@ const IraqMap = ({ city, setCity }) => {
       opacity: 1,
       offset: [30, 3],
     });
-    if (province.properties.ADMIN === city) {
-      layer.options.fillColor = state.color;
-      layer.options.fillOpacity = 1;
-    }
+    // if (province.properties.ADMIN === city) {
+    //   layer.options.fillColor = state.color;
+    //   layer.options.fillOpacity = 1;
+    // }
     layer.on({
       click: changeCityColor,
     });
@@ -58,7 +53,7 @@ const IraqMap = ({ city, setCity }) => {
 };
 
 IraqMap.propTypes = {
-  city: PropTypes.string.isRequired,
+  // city: PropTypes.string.isRequired,
   setCity: PropTypes.func.isRequired,
 };
 

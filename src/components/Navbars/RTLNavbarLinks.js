@@ -94,7 +94,7 @@ export default function RTLNavbarLinks() {
           className={classes.buttonLink}
         >
           <Notifications className={classes.icons} />
-          <span className={classes.notifications}>۳</span>
+          <span className={classes.notifications}>۰</span>
           <Hidden mdUp implementation="css">
             <p onClick={handleToggle} className={classes.linkText}>
               اعلان‌ها
@@ -128,19 +128,7 @@ export default function RTLNavbarLinks() {
                       onClick={handleClose}
                       className={classes.dropdownItem}
                     >
-                      اعلان دیگر
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropdownItem}
-                    >
-                      اعلان دیگر
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropdownItem}
-                    >
-                      اعلان دیگر
+                      اطلاعیه ندارید
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
