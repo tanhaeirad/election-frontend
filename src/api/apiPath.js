@@ -1,4 +1,4 @@
-export const ROOT_URL = "http://localhost:8000";
+export const ROOT_URL = "https://election-backend-tanhaeirad.herokuapp.com";
 export const ACCOUNT_URL = `${ROOT_URL}/account`;
 export const ELECTION_URL = `${ROOT_URL}/election`;
 // ACCOUNT
