@@ -13,7 +13,7 @@ const loginApiCall = (
     body: JSON.stringify({ username: username, password: password }, 2, 0),
   })
     .then((response) => {
-      if (!response.ok) setSnackbarInfo(true);
+      if (!response.ok) throw new Error(response.status);
       else return response.json();
     })
     .then((responseJson) => {

@@ -6,7 +6,7 @@ const getAccountInfoApiCall = (username, verbose, setShouldRedirect) => {
     headers: { "Content-Type": "application/json" },
   })
     .then((response) => {
-      if (!response.ok) return "unknown";
+      if (!response.ok) throw new Error(response.status);
       else return response.json();
     })
     .then((responseJson) => {

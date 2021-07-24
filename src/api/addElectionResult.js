@@ -14,12 +14,7 @@ const addElectionResult = (data, kind, setSnackbarInfo) => {
       body: JSON.stringify(data, 2, 0),
     })
       .then((response) => {
-        if (!response.ok)
-          setSnackbarInfo({
-            open: true,
-            message: "در ثبت نتایج خطایی رخ داده است.",
-            color: "danger",
-          });
+        if (!response.ok) throw new Error(response.status);
         else return response.json();
       })
       .then(() => {
@@ -32,7 +27,7 @@ const addElectionResult = (data, kind, setSnackbarInfo) => {
       .catch(() => {
         setSnackbarInfo({
           open: true,
-          message: "در ارتباط با سرور خطایی رخ داده است.",
+          message: "اجازه ثبت آرا را ندارید.",
           color: "danger",
         });
       });
@@ -46,12 +41,7 @@ const addElectionResult = (data, kind, setSnackbarInfo) => {
       body: JSON.stringify(data, 2, 0),
     })
       .then((response) => {
-        if (!response.ok)
-          setSnackbarInfo({
-            open: true,
-            message: "در ثبت نتایج خطایی رخ داده است.",
-            color: "danger",
-          });
+        if (!response.ok) throw new Error(response.status);
         else return response.json();
       })
       .then(() => {
@@ -64,7 +54,7 @@ const addElectionResult = (data, kind, setSnackbarInfo) => {
       .catch(() => {
         setSnackbarInfo({
           open: true,
-          message: "در ارتباط با سرور خطایی رخ داده است.",
+          message: "اجازه ثبت آرا را ندارید.",
           color: "danger",
         });
       });

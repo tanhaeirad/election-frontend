@@ -40,7 +40,8 @@ const getElectionResult = (election_id, setVoteData) => {
         },
         table: tableTemp,
       });
-    });
+    })
+    .catch(() => {});
 };
 
 export default getElectionResult;
