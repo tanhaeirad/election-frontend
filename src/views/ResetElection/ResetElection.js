@@ -89,29 +89,31 @@ export default function ResetElection() {
   });
 
   return (
-    <GridContainer justify="center">
-      <GridItem xs={12} sm={12} md={8}>
-        <Card>
-          <CardHeader color="info">
-            <h4 className={classes.cardTitleWhite}>بازگردانی انتخابات</h4>
-          </CardHeader>
-          <CardBody>
-            <p>
-              آیا مطمئن هستید که میخواهید انتخابات ریست شود؟ بعد از تایید امکان
-              بازگشت به عقب وجود ندارد.
-            </p>
-            <Button
-              round
-              color="danger"
-              onClick={() => {
-                resetElectionResult(localStorage.role, setSnackbarInfo);
-              }}
-            >
-              ریست کردن انتخابات
-            </Button>
-          </CardBody>
-        </Card>
-      </GridItem>
+    <div>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={8}>
+          <Card>
+            <CardHeader color="info">
+              <h4 className={classes.cardTitleWhite}>بازگردانی انتخابات</h4>
+            </CardHeader>
+            <CardBody>
+              <p>
+                آیا مطمئن هستید که میخواهید انتخابات ریست شود؟ بعد از تایید
+                امکان بازگشت به عقب وجود ندارد.
+              </p>
+              <Button
+                round
+                color="danger"
+                onClick={() => {
+                  resetElectionResult(localStorage.role, setSnackbarInfo);
+                }}
+              >
+                ریست کردن انتخابات
+              </Button>
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
       <Snackbar
         message={snackbarInfo.message}
         rtlActive
@@ -122,6 +124,6 @@ export default function ResetElection() {
         place="br"
         color={snackbarInfo.color}
       />
-    </GridContainer>
+    </div>
   );
 }
