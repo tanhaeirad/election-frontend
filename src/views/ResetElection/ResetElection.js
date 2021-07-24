@@ -8,6 +8,8 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import Snackbar from "components/Snackbar/Snackbar";
+import resetElectionResult from "api/resetElectionApiCall";
 
 const styles = {
   cardCategoryWhite: {
@@ -80,6 +82,12 @@ const useStyles = makeStyles(styles);
 
 export default function ResetElection() {
   const classes = useStyles();
+  const [snackbarInfo, setSnackbarInfo] = React.useState({
+    open: false,
+    message: "",
+    color: "danger",
+  });
+
   return (
     <GridContainer justify="center">
       <GridItem xs={12} sm={12} md={8}>
@@ -92,15 +100,28 @@ export default function ResetElection() {
               آیا مطمئن هستید که میخواهید انتخابات ریست شود؟ بعد از تایید امکان
               بازگشت به عقب وجود ندارد.
             </p>
-            <Button round color="danger" onClick={() => null}>
+            <Button
+              round
+              color="danger"
+              onClick={() => {
+                resetElectionResult(localStorage.role, setSnackbarInfo);
+              }}
+            >
               ریست کردن انتخابات
-            </Button>
-            <Button round color="warning" onClick={() => null}>
-              پایان رأی گیری
             </Button>
           </CardBody>
         </Card>
       </GridItem>
+      <Snackbar
+        message={snackbarInfo.message}
+        rtlActive
+        open={snackbarInfo.open}
+        closeNotification={() =>
+          setSnackbarInfo({ open: false, message: "", color: "danger" })
+        }
+        place="br"
+        color={snackbarInfo.color}
+      />
     </GridContainer>
   );
 }

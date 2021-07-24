@@ -6,6 +6,8 @@ export const LOGIN_URL = `${ACCOUNT_URL}/login/`; // post
 export const REGISTER_URL = `${ACCOUNT_URL}/register/`; // post
 export const GET_ACCOUNT_INFO_URL = `${ACCOUNT_URL}/users/`; // get
 // ELECTION
+export const RESET_ELECTION_URL = `${ELECTION_URL}/reset/`; // post
+
 export const GET_CANDIDATES_LIST_URL = `${ELECTION_URL}/candidates/`; // get
 export const CREATE_CANDIDATE_URL = `${ELECTION_URL}/candidates/`; // post
 export const GET_CANDIDATE_INFO_URL = `${ELECTION_URL}/candidates`; // get, :param id:
