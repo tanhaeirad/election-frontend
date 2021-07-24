@@ -1,11 +1,11 @@
 import { GET_CANDIDATES_LIST_URL } from "./apiPath";
 
-const getCandidateListApiCall = async (election_id, setCandidateList) => {
-  await fetch(GET_CANDIDATES_LIST_URL, {
+const getCandidateListApiCall = (election_id, setCandidateList) => {
+  fetch(GET_CANDIDATES_LIST_URL, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: `Token ${localStorage.getItem("token")}`,
     },
   })
     .then((response) => {
@@ -13,10 +13,10 @@ const getCandidateListApiCall = async (election_id, setCandidateList) => {
       else return response.json();
     })
     .then((responseJson) => {
-      var cList = [];
+      var cList = {};
       responseJson.filter((e) => {
         if (e.election_id === election_id) {
-          cList.push(e.first_name + " " + e.last_name);
+          cList[e.first_name + " " + e.last_name] = e.id;
         }
       });
       setCandidateList(cList);

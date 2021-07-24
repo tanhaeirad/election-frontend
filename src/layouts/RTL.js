@@ -89,6 +89,7 @@ export default function RTL({ ...rest }) {
       window.removeEventListener("resize", resizeFunction);
     };
   }, [mainPanel]);
+
   return (
     <div className={classes.wrapper}>
       <Sidebar

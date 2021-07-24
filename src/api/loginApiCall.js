@@ -1,13 +1,13 @@
 import { LOGIN_URL } from "./apiPath";
 import getAccountInfoApiCall from "api/getAccountInfoApiCall";
 
-const loginApiCall = async (
+const loginApiCall = (
   username,
   password,
   setSnackbarInfo,
   setShouldRedirect
 ) => {
-  await fetch(LOGIN_URL, {
+  fetch(LOGIN_URL, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username: username, password: password }, 2, 0),

@@ -3,13 +3,13 @@ import {
   ADD_ELECTION_RESULT_BY_SUPERVISOR_URL,
 } from "./apiPath";
 
-const addElectionResult = async (data, kind, setSnackbarInfo) => {
+const addElectionResult = (data, kind, setSnackbarInfo) => {
   if (kind === "Inspector") {
-    await fetch(ADD_ELECTION_RESULT_BY_INSPECTOR_URL, {
+    fetch(`${ADD_ELECTION_RESULT_BY_INSPECTOR_URL}/1/`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token"),
+        Authorization: `Token ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(data, 2, 0),
     })
@@ -37,9 +37,12 @@ const addElectionResult = async (data, kind, setSnackbarInfo) => {
         });
       });
   } else if (kind === "Supervisor") {
-    await fetch(ADD_ELECTION_RESULT_BY_SUPERVISOR_URL, {
+    fetch(`${ADD_ELECTION_RESULT_BY_SUPERVISOR_URL}/1/`, {
       method: "post",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
       body: JSON.stringify(data, 2, 0),
     })
       .then((response) => {

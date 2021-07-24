@@ -22,44 +22,34 @@ import getElectionResult from "api/getElectionResult";
 import IraqMap from "views/IraqMap/iraq";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 
-const status = {
-  "not init yet": "رأی گیری هنوز آغاز نشده است.",
-  "pending": "رأی گیری در جریان است.",
-  "rejected": "رأی گیری مردود اعلام شده است.",
-  "accepted": "رأی گیری تایید شده است.",
-  "unknown": "وضعیت رأی‌گیری نامشخص است.",
-};
-
 const useStyles = makeStyles(styles);
 
 const RTLPage = () => {
   const classes = useStyles();
   const [city, setCity] = React.useState('الأنبار');
   const [electionStatus, setElectionStatus] = React.useState('');
-  const [voteChartData, setVoteChartData] = React.useState({
-    Linear: {
-      labels: ["احمد حسینی", "مینا رضایی", "مبینا احمدپور", "جلال آقایی"],
-      series: [[0, 36738, 23789, 56142, 38735]],
+  const [voteData, setVoteData] = React.useState({
+    chart: {
+      Linear: {
+        labels: [],
+        series: [[]],
+      },
+      Bar: {
+        labels: [],
+        series: [[]],
+      }
     },
-    Bar: {
-      labels: ["احمد حسینی", "مینا رضایی", "مبینا احمدپور", "جلال آقایی"],
-      series: [[36738, 23789, 56142, 38735]],
-    }
+    table: [],
   });
-  const [voteTableDate, setVoteTableData] = React.useState([
-    [ '1', 'احمد حسینی', '36738' ],
-    [ '2', 'مینا رضایی', '23789' ],
-    [ '3', 'مبینا احمدپور', '56142' ],
-    [ '4', 'جلال آقایی', '38735' ]
-  ]);
 
   React.useEffect(() => {
-    const fetchStatus = async () => {
-      setElectionStatus(status[await getElectionStatus(1)]);
-    };
-    getElectionResult(1, setVoteChartData, setVoteTableData);
-    fetchStatus();
-  });
+    let isMounted = true;
+    if (isMounted) {
+        getElectionStatus(1, electionStatus, setElectionStatus);
+        getElectionResult(1, setVoteData);
+    }
+    return () => { isMounted = false };
+  }, []);
 
   return (
     <div>
@@ -69,7 +59,7 @@ const RTLPage = () => {
             <CardHeader color="rose">
               <ChartistGraph
                 className="ct-chart"
-                data={voteChartData.Linear}
+                data={voteData.chart.Linear}
                 type="Line"
                 options={linearVoteChart.options}
                 listener={linearVoteChart.animation}
@@ -93,7 +83,7 @@ const RTLPage = () => {
             <CardHeader color="warning">
               <ChartistGraph
                 className="ct-chart"
-                data={voteChartData.Bar}
+                data={voteData.chart.Bar}
                 type="Bar"
                 options={barVoteChart.options}
                 responsiveOptions={barVoteChart.responsiveOptions}
@@ -127,7 +117,7 @@ const RTLPage = () => {
                   stickyHeader
                   tableHeaderColor="success"
                   tableHead={["کد", "نام کاندید", "میزان رأی"]}
-                  tableData={voteTableDate}
+                  tableData={voteData.table}
                 />
               </Paper>
             </CardBody>

@@ -1,15 +1,11 @@
 import { GET_CANDIDATES_LIST_URL } from "./apiPath";
 
-const getElectionResult = async (
-  election_id,
-  setVoteChartData,
-  setVoteTableData
-) => {
-  await fetch(GET_CANDIDATES_LIST_URL, {
+const getElectionResult = (election_id, setVoteData) => {
+  fetch(GET_CANDIDATES_LIST_URL, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: `Token ${localStorage.getItem("token")}`,
     },
   })
     .then((response) => {
@@ -22,28 +18,29 @@ const getElectionResult = async (
       var labels = [];
       responseJson.filter((e) => {
         if (e.election_id === election_id) {
-          linearTemp.push(parseInt(e.vote));
+          linearTemp.push(parseInt(e.vote || "0"));
           labels.push(e.first_name + " " + e.last_name);
         }
       });
-      setVoteChartData({
-        Linear: {
-          labels: labels,
-          series: linearTemp,
-        },
-        Bar: {
-          labels: labels,
-          series: linearTemp.slice(1), // remove 0 from the beginning
-        },
-      });
-      tableTemp.push(
-        labels.forEach((item, index) =>
+      labels.forEach((item, index) => {
+        tableTemp.push(
           Array(String(index + 1), item, String(linearTemp.slice(1)[index]))
-        )
-      );
-      setVoteTableData(tableTemp);
-    })
-    .catch(() => {});
+        );
+      });
+      setVoteData({
+        chart: {
+          Linear: {
+            labels: labels,
+            series: Array(linearTemp),
+          },
+          Bar: {
+            labels: labels,
+            series: Array(linearTemp.slice(1)), // remove 0 from the beginning
+          },
+        },
+        table: tableTemp,
+      });
+    });
 };
 
 export default getElectionResult;

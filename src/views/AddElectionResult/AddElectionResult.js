@@ -51,24 +51,28 @@ export default function AddElectionResult() {
   const mainPanel = React.createRef();
   // initialize and destroy the PerfectScrollbar plugin
   const [, setMobileOpen] = React.useState(false);
-  const [candidateList, setCandidateList] = React.useState([
-    "احمد حسینی",
-    "مینا رضایی",
-    "مبینا احمدپور",
-    "جلال آقایی",
-  ]);
+  const [candidateList, setCandidateList] = React.useState({});
   const [snackbarInfo, setSnackbarInfo] = React.useState({
     open: false,
     message: "",
     color: "danger",
   });
-  let voteResult = {};
+  var voteResult = [];
+  const setVote = () => {
+    Object.keys(candidateList).map((item) => {
+      voteResult.push({
+        candidate: candidateList[item],
+        vote: parseInt(document.getElementById(item).value),
+      });
+    });
+  };
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
       setMobileOpen(false);
     }
   };
   React.useEffect(() => {
+    let isMounted = true;
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(mainPanel.current, {
         suppressScrollX: true,
@@ -77,8 +81,7 @@ export default function AddElectionResult() {
       document.body.style.overflow = "hidden";
     }
     window.addEventListener("resize", resizeFunction);
-
-    getCandidatesListApiCall(1, setCandidateList);
+    if (isMounted) getCandidatesListApiCall(1, setCandidateList);
 
     // Specify how to clean up after this effect:
     return function cleanup() {
@@ -86,8 +89,9 @@ export default function AddElectionResult() {
         ps.destroy();
       }
       window.removeEventListener("resize", resizeFunction);
+      isMounted = false;
     };
-  }, [mainPanel]);
+  }, []);
 
   return (
     <GridContainer justify="center" style={{ direction: "rtl" }}>
@@ -98,7 +102,7 @@ export default function AddElectionResult() {
           </CardHeader>
           <CardBody>
             <Paper elevation={0} className={classes.paper}>
-              {candidateList.map((item, key) => (
+              {Object.keys(candidateList).map((item, key) => (
                 <GridContainer key={key}>
                   <GridItem xs={8} sm={8} md={8}>
                     <h6>{item}</h6>
@@ -106,15 +110,11 @@ export default function AddElectionResult() {
                   <GridItem xs={4} sm={4} md={4}>
                     <CustomInput
                       labelText="تعداد آراء"
-                      id={`candidate ${key}`}
+                      id={item}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       rtlActive
-                      inputProps={{
-                        onChange: (e) =>
-                          (voteResult[item] = String(e.target.value)),
-                      }}
                     />
                   </GridItem>
                 </GridContainer>
@@ -123,13 +123,14 @@ export default function AddElectionResult() {
           </CardBody>
           <CardFooter>
             <Button
-              onClick={() =>
+              onClick={() => {
+                setVote();
                 addElectionResult(
                   voteResult,
                   localStorage.role,
                   setSnackbarInfo
-                )
-              }
+                );
+              }}
               color="primary"
               className={classes.cardTitleWhite}
             >
