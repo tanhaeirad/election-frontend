@@ -15,14 +15,12 @@ const addElectionResult = (data, kind, setSnackbarInfo) => {
     })
       .then((response) => {
         if (!response.ok) throw new Error(response.status);
-        else return response.json();
-      })
-      .then(() => {
-        setSnackbarInfo({
-          open: true,
-          message: "نتایج با موفقیت ثبت شد.",
-          color: "success",
-        });
+        else
+          setSnackbarInfo({
+            open: true,
+            message: "نتایج با موفقیت ثبت شد.",
+            color: "success",
+          });
       })
       .catch(() => {
         setSnackbarInfo({
@@ -42,14 +40,12 @@ const addElectionResult = (data, kind, setSnackbarInfo) => {
     })
       .then((response) => {
         if (!response.ok) throw new Error(response.status);
-        else return response.json();
-      })
-      .then(() => {
-        setSnackbarInfo({
-          open: true,
-          message: "نتایج با موفقیت ثبت شد.",
-          color: "success",
-        });
+        else
+          setSnackbarInfo({
+            open: true,
+            message: "نتایج با موفقیت ثبت شد.",
+            color: "success",
+          });
       })
       .catch(() => {
         setSnackbarInfo({

@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,6 +26,7 @@ const useStyles = makeStyles(styles);
 
 export default function RTLNavbarLinks() {
   const classes = useStyles();
+  const [shouldRedirect, setShouldRedirect] = React.useState(false);
   const [openProfile, setOpenProfile] = React.useState(null);
   const [open, setOpen] = React.useState(null);
   const handleToggle = (event) => {
@@ -49,7 +51,9 @@ export default function RTLNavbarLinks() {
     setOpen(null);
   };
 
-  return (
+  return shouldRedirect ? (
+    <Redirect to="/login" />
+  ) : (
     <div>
       <div className={classes.searchWrapper}>
         <CustomInput
@@ -195,7 +199,10 @@ export default function RTLNavbarLinks() {
                   </MenuItem>
                   <Divider light />
                   <MenuItem
-                    onClick={handleCloseProfile}
+                    onClick={() => {
+                      localStorage.clear();
+                      setShouldRedirect(true);
+                    }}
                     className={classes.dropdownItem}
                   >
                     خروج
