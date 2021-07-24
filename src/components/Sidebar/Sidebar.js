@@ -15,6 +15,8 @@ import Icon from "@material-ui/core/Icon";
 import AdminNavbarLinks from "components/Navbars/AdminNavbarLinks.js";
 import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.js";
 
+import Notifications from "@material-ui/icons/Notifications";
+
 import styles from "assets/jss/material-dashboard-react/components/sidebarStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -47,19 +49,33 @@ export default function Sidebar(props) {
           >
             <ListItem button className={classes.itemLink + listItemClasses}>
               {typeof prop.icon === "string" ? (
-                <Icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive,
-                  })}
-                >
-                  {prop.icon}
-                </Icon>
+                <>
+                  <Icon
+                    className={classNames(classes.itemIcon, whiteFontClasses, {
+                      [classes.itemIconRTL]: props.rtlActive,
+                    })}
+                  >
+                    {prop.icon}
+                  </Icon>
+                  {
+                  prop.icon === "Notifications"
+                    ? <span className={classes.notifications}>۰</span>
+                    : <div />
+                  }
+                </>
               ) : (
-                <prop.icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive,
-                  })}
-                />
+                <>
+                  <prop.icon
+                    className={classNames(classes.itemIcon, whiteFontClasses, {
+                      [classes.itemIconRTL]: props.rtlActive,
+                    })}
+                  />
+                  {
+                    prop.icon === Notifications
+                      ? <span className={classes.notifications}>۰</span>
+                      : <div />
+                  }
+                </>
               )}
               <ListItemText
                 primary={props.rtlActive ? prop.rtlName : prop.name}

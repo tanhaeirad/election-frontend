@@ -1,17 +1,17 @@
 /*eslint-disable*/
 import React from "react";
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
+// import AddAlert from "@material-ui/icons/AddAlert";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Button from "components/CustomButtons/Button.js";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
-import Snackbar from "components/Snackbar/Snackbar.js";
+// import Button from "components/CustomButtons/Button.js";
+// import SnackbarContent from "components/Snackbar/SnackbarContent.js";
+// import Snackbar from "components/Snackbar/Snackbar.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
@@ -34,7 +34,7 @@ const styles = {
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    fontFamily: "'Roboto', 'Vazir', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
     textDecoration: "none",
     "& small": {
@@ -123,36 +123,17 @@ export default function Notifications() {
   return (
     <Card>
       <CardHeader color="primary">
-        <h4 className={classes.cardTitleWhite}>Notifications</h4>
+        <h4 className={classes.cardTitleWhite}>اطلاعیه ها</h4>
         <p className={classes.cardCategoryWhite}>
-          Handcrafted by our friends from{" "}
-          <a
-            target="_blank"
-            href="https://material-ui-next.com/?ref=creativetime"
-          >
-            Material UI
-          </a>{" "}
-          and styled by{" "}
-          <a
-            target="_blank"
-            href="https://www.creative-tim.com/?ref=mdr-notifications-page"
-          >
-            Creative Tim
-          </a>
-          . Please checkout the{" "}
-          <a href="#pablo" target="_blank">
-            full documentation
-          </a>
-          .
         </p>
       </CardHeader>
       <CardBody>
         <GridContainer>
           <GridItem xs={12} sm={12} md={6}>
-            <h5>Notifications Style</h5>
+            <h5>اطلاعیه ای ندارید</h5>
             <br />
-            <SnackbarContent message={"This is a plain notification"} />
-            <SnackbarContent
+            {/* <SnackbarContent message={""} /> */}
+            {/* <SnackbarContent
               message={"This is a notification with close button."}
               close
             />
@@ -167,9 +148,9 @@ export default function Notifications() {
               }
               close
               icon={AddAlert}
-            />
+            /> */}
           </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
+          {/* <GridItem xs={12} sm={12} md={6}>
             <h5>Notifications States</h5>
             <br />
             <SnackbarContent
@@ -207,9 +188,9 @@ export default function Notifications() {
               close
               color="primary"
             />
-          </GridItem>
+          </GridItem> */}
         </GridContainer>
-        <br />
+        {/* <br />
         <br />
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={6} style={{ textAlign: "center" }}>
@@ -339,7 +320,7 @@ export default function Notifications() {
               </GridItem>
             </GridContainer>
           </GridItem>
-        </GridContainer>
+        </GridContainer> */}
       </CardBody>
     </Card>
   );
