@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/voting-system/static/css/main.0f7faa95.chunk.css",
-    "main.js": "/voting-system/static/js/main.15582c6c.chunk.js",
-    "main.js.map": "/voting-system/static/js/main.15582c6c.chunk.js.map",
+    "main.css": "/voting-system/static/css/main.0abcb23b.chunk.css",
+    "main.js": "/voting-system/static/js/main.1931d13e.chunk.js",
+    "main.js.map": "/voting-system/static/js/main.1931d13e.chunk.js.map",
     "runtime-main.js": "/voting-system/static/js/runtime-main.1176d445.js",
     "runtime-main.js.map": "/voting-system/static/js/runtime-main.1176d445.js.map",
-    "static/css/2.12a3a2f0.chunk.css": "/voting-system/static/css/2.12a3a2f0.chunk.css",
-    "static/js/2.92b4bf98.chunk.js": "/voting-system/static/js/2.92b4bf98.chunk.js",
-    "static/js/2.92b4bf98.chunk.js.map": "/voting-system/static/js/2.92b4bf98.chunk.js.map",
+    "static/css/2.ca90b4ae.chunk.css": "/voting-system/static/css/2.ca90b4ae.chunk.css",
+    "static/js/2.97bc5360.chunk.js": "/voting-system/static/js/2.97bc5360.chunk.js",
+    "static/js/2.97bc5360.chunk.js.map": "/voting-system/static/js/2.97bc5360.chunk.js.map",
     "index.html": "/voting-system/index.html",
-    "static/css/2.12a3a2f0.chunk.css.map": "/voting-system/static/css/2.12a3a2f0.chunk.css.map",
-    "static/css/main.0f7faa95.chunk.css.map": "/voting-system/static/css/main.0f7faa95.chunk.css.map",
-    "static/js/2.92b4bf98.chunk.js.LICENSE.txt": "/voting-system/static/js/2.92b4bf98.chunk.js.LICENSE.txt",
+    "static/css/2.ca90b4ae.chunk.css.map": "/voting-system/static/css/2.ca90b4ae.chunk.css.map",
+    "static/css/main.0abcb23b.chunk.css.map": "/voting-system/static/css/main.0abcb23b.chunk.css.map",
+    "static/js/2.97bc5360.chunk.js.LICENSE.txt": "/voting-system/static/js/2.97bc5360.chunk.js.LICENSE.txt",
     "static/media/index.css": "/voting-system/static/media/Vazir-Thin-FD.fd15fed2.eot",
     "static/media/marc.e8607287.jpg": "/voting-system/static/media/marc.e8607287.jpg",
     "static/media/sidebar-1.0a127c58.jpg": "/voting-system/static/media/sidebar-1.0a127c58.jpg",
@@ -22,9 +22,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1176d445.js",
-    "static/css/2.12a3a2f0.chunk.css",
-    "static/js/2.92b4bf98.chunk.js",
-    "static/css/main.0f7faa95.chunk.css",
-    "static/js/main.15582c6c.chunk.js"
+    "static/css/2.ca90b4ae.chunk.css",
+    "static/js/2.97bc5360.chunk.js",
+    "static/css/main.0abcb23b.chunk.css",
+    "static/js/main.1931d13e.chunk.js"
   ]
 }
